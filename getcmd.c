@@ -10,15 +10,9 @@ char **getcmd()
 	if (n == -1)
 		exit(98);
 
-	line[n - 1] = 0;
-	arg = malloc(sizeof(char *));
-	arg[0] = strtok(line, "\t ");
+	line[n - 1] = '\0';
 
-	do {
-		word = strtok(NULL, "\t ");
-		arg = realloc(arg, sizeof(char *) * i + 1);
-		arg[i++] = word;
+	arg = split_string(line, n - 1, ' ');
 
-	} while (word);
 	return (arg);
 }

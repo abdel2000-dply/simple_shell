@@ -15,4 +15,6 @@ char *_strcat(char *dest, char *src);
 void exec_cmd(char **arg, char *av);
 char **getcmd();
 
+char **split_string(char *s, int n, char delimiter);
+
 #endif /* SHELL_H */
