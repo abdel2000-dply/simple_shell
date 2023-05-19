@@ -2,14 +2,20 @@
 
 int main(int __attribute__((unused)) ac, char **av)
 {
-	char **arg;
-	int exit_code;
+	char **arg, **cmds;
+	int exit_code, i, j;
 
 	while (isatty(STDIN_FILENO))
 	{
 		printf("$ ");
 		
-		arg = getcmd();
+		cmds = getcmd();
+		for (i = 0; cmds [i]; i++)
+		{
+			for (j = 0; cmds[i][j] != '\0'; j++)
+				;
+
+			arg = split_string(cmds[i], j, ' ');
 		if (!arg[0])
 			continue;
 
@@ -21,6 +27,8 @@ int main(int __attribute__((unused)) ac, char **av)
 		exec_cmd(arg, av[0]);
 
 		free(arg);
+		}
+		free(cmds);
 	}
 
 	return (0);
