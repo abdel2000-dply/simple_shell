@@ -17,4 +17,6 @@ char **getcmd();
 
 char **split_string(char *s, int n, char delimiter);
 
+void cd(char *arg, char *av);
+
 #endif /* SHELL_H */

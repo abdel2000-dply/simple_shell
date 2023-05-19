@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
-* split_string - a fucntion that splits a string.
-* @s: string.
-* Return: pointer to an array of array.
-*/
+ * split_string - a fucntion that splits a string.
+ * @s: string.
+ * Return: pointer to an array of array.
+ */
 
 char **split_string(char *s, int len, char delimiter)
 {

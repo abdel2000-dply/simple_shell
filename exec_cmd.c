@@ -5,12 +5,19 @@ void exec_cmd(char **arg, char *av)
 	char *bin_arg;
 	pid_t pid;
 
+	if (!strcmp("cd", arg[0]))
+	{
+		cd(arg[1], av);
+		return;
+	}
+
 	bin_arg = _strcat("/usr/bin/", arg[0]);
 	if (!access(arg[0], F_OK) && !access(bin_arg, F_OK))
 	{
 		perror(av);
 		return;
 	}
+
 	pid = fork();
 	if (pid == 0)
 	{
