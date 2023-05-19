@@ -11,8 +11,8 @@ char **getcmd()
 		exit(98);
 
 	line[n - 1] = '\0';
-
-	arg = split_string(line, n - 1, ' ');
+	// make a checker function to get the delimiter
+	arg = split_string(line, n - 1, ';');
 
 	return (arg);
 }
