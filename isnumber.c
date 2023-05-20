@@ -9,7 +9,7 @@ int isnumber(char *s)
 
 	while (s[i])
 	{
-		if (isdigit(s[i++]) == 0)
+		if (_isdigit(s[i++]) == 0)
 			return (0);
 	}
 	return (1);

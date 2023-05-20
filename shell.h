@@ -17,6 +17,14 @@ char **getcmd();
 
 char **split_string(char *s, int n, char delimiter);
 
+<<<<<<< HEAD
 void cd(char *arg, char *av);
+=======
+int _atoi(char *s);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+int _strlen(char *s);
+int _isdigit(int c);
+>>>>>>> f362b2b (adding string manipulation functions)
 
 #endif /* SHELL_H */
