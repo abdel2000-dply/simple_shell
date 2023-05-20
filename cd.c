@@ -12,7 +12,7 @@ void cd(char *arg, char *av)
 		home = getenv("HOME");
 		chdir(home);
 	}
-	else if (!strcmp("-", arg)) 
+	else if (!_strcmp("-", arg)) 
 	{
 		if (!last_dir[0])
 		{
@@ -23,7 +23,7 @@ void cd(char *arg, char *av)
 		getcwd(curr_dir, sizeof(curr_dir));
 		chdir(last_dir);
 		printf("%s\n", last_dir);
-		strcpy(last_dir, curr_dir);
+		_strcpy(last_dir, curr_dir);
 	}
 	else
 	{
@@ -35,6 +35,6 @@ void cd(char *arg, char *av)
 			perror(arg);
 		}
 		else
-			strcpy(last_dir, curr_dir);
+			_strcpy(last_dir, curr_dir);
 	}
 }
