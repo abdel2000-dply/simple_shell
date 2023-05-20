@@ -13,6 +13,7 @@ char **split_string(char *s, int len, char delimiter)
 	int start = -1, end = -1;
 	char *word;
 
+
 	for (int i = 0; i <= len; i++)
 	{
 		if (s[i] == delimiter || s[i] == '\0'|| s[i] == '\t' )
