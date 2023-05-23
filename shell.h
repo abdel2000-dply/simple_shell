@@ -7,11 +7,12 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <ctype.h>
+#include <fcntl.h>
 
 extern char **environ;
 
 void exec_cmd(char **arg, char *av);
-char **getcmd();
+char **getcmd(int fd);
 char **split_string(char *s, int n, char delimiter);
 
 /* string manipulation */
@@ -27,5 +28,7 @@ int isnumber(char *s);
 
 /* built-in commands */
 void cd(char *arg, char *av);
+
+char *_getline(int fd);
 
 #endif /* SHELL_H */

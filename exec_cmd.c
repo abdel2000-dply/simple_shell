@@ -3,7 +3,6 @@
 void exec_cmd(char **arg, char *av)
 {
 	char *bin_arg;
-	pid_t pid;
 
 	if (!strcmp("cd", arg[0]))
 	{
@@ -18,13 +17,10 @@ void exec_cmd(char **arg, char *av)
 		return;
 	}
 
-	pid = fork();
-	if (pid == 0)
+	if (fork() == 0)
 	{
 		if (execve(arg[0], arg, NULL) == -1)
-		{
 			execve(bin_arg, arg, environ);
-		}
 
 		perror(av);
 		exit(EXIT_FAILURE);
