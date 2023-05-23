@@ -1,17 +1,15 @@
 #include "shell.h"
 
-char **getcmd()
+char **getcmd(int fd)
 {
-	char **arg, *line, *word;
-	size_t len = 0;
-	int n, i = 1;
+	char **arg, *line = NULL;
+	
+	line = _getline(fd);
+	if (line == NULL)
+		exit(0);
 
-	n = getline(&line, &len, stdin);
-	if (n == -1)
-		exit(98);
+	arg = split_string(line, _strlen(line), ';');
 
-	line[n - 1] = '\0';
-	arg = split_string(line, n - 1, ';');
-
+	free(line);
 	return (arg);
 }
