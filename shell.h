@@ -11,7 +11,7 @@
 extern char **environ;
 
 void exec_cmd(char **arg, char *av);
-char **getcmd();
+char *getcmd();
 char **split_string(char *s, int n, char delimiter);
 
 /* string manipulation */
@@ -27,5 +27,8 @@ int isnumber(char *s);
 
 /* built-in commands */
 void cd(char *arg, char *av);
+
+char *delimiter_collector(char *s, int len);
+char **spliting_bydelimiter(char **cmds, char *del);
 
 #endif /* SHELL_H */

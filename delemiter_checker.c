@@ -1,13 +1,25 @@
 #include "shell.h"
 
-char delimiter_chicker(char *s, int len)
+char *delimiter_collector(char *s, int len)
 {
-	for (int i = 0; i < len; i++)
+	int i, j = 0;
+	char *del = malloc(sizeof(char) * (len + 1));
+
+	for (i = 0; i < len; i++)
 	{
-		if (s[i] == '#' || s[i] == '&' || s[i] == '|' || s[i] == ';')
-			return s[i];
+		if (s[i] == ';' || s[i] == '#')
+		{
+			del[j] = s[i];
+			j++;
+		}
+	}
+	if (j == 0)
+	{
+		free(del);
+		return NULL;
 	}
 
-	return '\0';
-}
+	del[j] = '\0';
 
+	return del;
+}
