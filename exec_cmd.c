@@ -1,19 +1,38 @@
 #include "shell.h"
 
+typedef struct builtin
+{
+	char *cmd;
+	int (*func)(char **arg, char *av);
+} builtin;
+
 void exec_cmd(char **arg, char *av)
 {
 	char *bin_arg;
-
-	if (!strcmp("cd", arg[0]))
+	int i = 0;
+	builtin b[] = {
+		{"cd", cd},
+		{"exit", ex},
+		{"env", _env},
+		{"setenv", _setenv},
+		{"unsetenv", _unsetenv},
+		{NULL, NULL},
+	};
+	while (b[i].cmd)
 	{
-		cd(arg[1], av);
-		return;
+		if (!strcmp(b[i].cmd, arg[0]))
+		{
+			b[i].func(arg, av);
+			return;
+		}
+		i++;
 	}
+	
 
-	bin_arg = _strcat("/usr/bin/", arg[0]);
-	if (!access(arg[0], F_OK) && !access(bin_arg, F_OK))
+	bin_arg = _strcat("/bin/", arg[0]);
+	if (access(arg[0], F_OK) && access(bin_arg, F_OK))
 	{
-		perror(av);
+		dprintf(STDERR_FILENO, "%s: %s: command not found\n", av, arg[0]);
 		return;
 	}
 
