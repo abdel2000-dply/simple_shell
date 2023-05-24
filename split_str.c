@@ -8,13 +8,13 @@
 char **split_string(char *s, int len, char delimiter)
 {
 	char **result = NULL;
-	int r_size = 0, w_count = 0;
+	int r_size = 0, w_count = 0, i;
 	int in_word = 0, w_len;
 	int start = -1, end = -1;
 	char *word;
 
 
-	for (int i = 0; i <= len; i++)
+	for (i = 0; i <= len; i++)
 	{
 		if (s[i] == delimiter || s[i] == '\0'|| s[i] == '\t' )
 		{
