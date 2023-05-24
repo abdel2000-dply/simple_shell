@@ -20,11 +20,6 @@ void intmode(char **av)
 		{
 			arg = split_string(cmds[i], _strlen(cmds[i]), ' ');
 
-			exit_code = (isnumber(arg[1])) ? _atoi(arg[1]) : 100;
-
-			if (_strcmp("exit", arg[0]) == 0)
-				_exit(exit_code);
-
 			exec_cmd(arg, av[0]);
 
 			free(arg);
