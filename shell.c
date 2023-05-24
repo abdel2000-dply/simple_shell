@@ -2,8 +2,9 @@
 
 void intmode(char **av)
 {
-	char **arg, **cmds;
-	int exit_code, i;
+	char **arg, **cmds, *line;
+	int len, i;
+	char *del;
 
 	while (1)
 	{
@@ -11,7 +12,20 @@ void intmode(char **av)
 			printf("$ ");
 		fflush(stdout);
 
-		cmds = getcmd(STDIN_FILENO);
+		line = getcmd(STDIN_FILENO);
+		len = _strlen(line);
+		del = delimiter_collector(line, len);
+
+		if (del != NULL)
+		{
+			cmds = split_string(line, len, del[0]);
+			cmds = spliting_bydelimiter(cmds, del);
+		}
+		else {
+			cmds = malloc(2 * sizeof(char *));
+			cmds[0] = line;
+			cmds[1] = NULL;
+		}
 
 		if (!cmds[0])
 			continue;
@@ -24,6 +38,7 @@ void intmode(char **av)
 
 			free(arg);
 		}
+		free(del);
 		free(cmds);
 	}
 }
@@ -31,19 +46,20 @@ void intmode(char **av)
 void filemode(char **av)
 {
 	int fd;
-	char **cmds, **arg;
+	char **cmds, *line;
 
 
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		perror(av[1]);
 
-	while ((cmds = getcmd(fd)) != NULL)
+	while ((line = getcmd(fd)) != NULL)
 	{
-		if (!cmds[0])
+		if (!line)
 		continue;
-		arg = split_string(cmds[0], _strlen(cmds[0]), ' ');
-		exec_cmd(arg, av[0]);
+
+		cmds = split_string(line, _strlen(line), ' ');
+		exec_cmd(cmds, av[0]);
 	}
 }
 
