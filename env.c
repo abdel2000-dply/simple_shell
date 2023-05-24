@@ -56,7 +56,7 @@ int _setenv(char **arg, char *av)
     size = 0;
     while (environ[size])
     {
-        if (!strncmp(environ[size], name, len) && (*env)[len] == '=')
+        if (!strncmp(environ[size], name, len) && environ[size][len] == '=')
         {
             env[size] = malloc(_strlen(name) + _strlen(value) + 2);
             env[size] = new_env_var(name, value);
@@ -101,7 +101,7 @@ int _unsetenv(char **arg, char *av)
     size = 0;
     while (environ[size])
     {
-        if (!strncmp(environ[size], name, len) && (*environ)[len] == '=')
+        if (!strncmp(environ[size], name, len) && environ[size][len] == '=')
         {
             found = 1;
             size++;
