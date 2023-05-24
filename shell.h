@@ -27,8 +27,13 @@ int _isdigit(int c);
 int isnumber(char *s);
 
 /* built-in commands */
-void cd(char *arg, char *av);
+int cd(char **arg, char *av);
+int ex(char **arg, char *av);
+int _env(char **arg, char *av);
+int _setenv(char **arg, char *av);
+int _unsetenv(char **arg, char *av);
 
+char *_getenv(char *name);
 char *_getline(int fd);
 
 #endif /* SHELL_H */
