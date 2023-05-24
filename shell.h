@@ -12,11 +12,7 @@
 extern char **environ;
 
 void exec_cmd(char **arg, char *av);
-<<<<<<< HEAD
 char *getcmd(int fd);
-=======
-char **getcmd();
->>>>>>> c8a000a (adding cd built-in cmd)
 char **split_string(char *s, int n, char delimiter);
 
 /* string manipulation */
@@ -31,7 +27,6 @@ int _isdigit(int c);
 int isnumber(char *s);
 
 /* built-in commands */
-<<<<<<< HEAD
 int cd(char **arg, char *av);
 int ex(char **arg, char *av);
 int _env(char **arg, char *av);
@@ -43,8 +38,5 @@ char *_getline(int fd);
 
 char *delimiter_collector(char *s, int len);
 char **spliting_bydelimiter(char **cmds, char *del);
-=======
-void cd(char *arg, char *av);
->>>>>>> c8a000a (adding cd built-in cmd)
 
 #endif /* SHELL_H */
