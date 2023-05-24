@@ -12,7 +12,7 @@
 extern char **environ;
 
 void exec_cmd(char **arg, char *av);
-char **getcmd(int fd);
+char *getcmd(int fd);
 char **split_string(char *s, int n, char delimiter);
 
 /* string manipulation */
@@ -35,5 +35,8 @@ int _unsetenv(char **arg, char *av);
 
 char *_getenv(char *name);
 char *_getline(int fd);
+
+char *delimiter_collector(char *s, int len);
+char **spliting_bydelimiter(char **cmds, char *del);
 
 #endif /* SHELL_H */
