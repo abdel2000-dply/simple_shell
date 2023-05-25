@@ -28,6 +28,8 @@ char **split_string(char *s, int len, char delimiter)
 				result[w_count] = word;
 				w_count++, in_word = 0;
 			}
+			if (s[i] == '#')
+				break;
 		}
 		else
 		{
