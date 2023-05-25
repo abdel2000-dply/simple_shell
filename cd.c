@@ -1,7 +1,7 @@
 #include "shell.h"
 
 
-int err(char *arg, char *av, int no);
+int erro(char *arg, char *av, int no);
 char last_dir[256] = {0};
 /**
  * cd - change directory
@@ -19,7 +19,7 @@ int cd(char **arg, char *av)
 		getcwd(last_dir, sizeof(last_dir));
 		home = _getenv("HOME");
 		if (chdir(home))
-			return (err(arg[1], av, 0));
+			return (erro(arg[1], av, 0));
 		pwd[2] = home;
 		_setenv(pwd, av);
 
@@ -27,7 +27,7 @@ int cd(char **arg, char *av)
 	else if (!_strcmp("-", arg[1]))
 	{
 		if (!last_dir[0])
-			return (err(arg[1], av, 1));
+			return (erro(arg[1], av, 1));
 
 		getcwd(curr_dir, sizeof(curr_dir));
 		chdir(last_dir);
@@ -41,7 +41,7 @@ int cd(char **arg, char *av)
 	{
 		getcwd(curr_dir, sizeof(curr_dir));
 		if (chdir(arg[1]) == -1)
-			return (err(arg[1], av, 2));
+			return (erro(arg[1], av, 2));
 		pwd[2] = curr_dir;
 		_strcpy(last_dir, curr_dir);
 		_setenv(pwd, av);
@@ -50,13 +50,13 @@ int cd(char **arg, char *av)
 }
 
 /**
- * err - prints errors
+ * erro - prints errors
  * @arg: ...
  * @av: ...
  * @no: ...
  * Return: ...
  */
-int err(char *arg, char *av, int no)
+int erro(char *arg, char *av, int no)
 {
 	if (no == 0)
 		perror("cd");
