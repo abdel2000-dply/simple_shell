@@ -1,5 +1,13 @@
 #include "shell.h"
 
+/**
+* delimiter_collector - collects the detected delimiters
+* @s: a string
+* @len: the length of the string
+*
+* Return: a string containing the detected delimiters.
+*/
+
 char *delimiter_collector(char *s, int len)
 {
 	int i, j = 0;

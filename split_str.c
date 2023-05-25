@@ -21,10 +21,10 @@ char **split_string(char *s, int len, char delimiter)
 			{
 				end = i, w_len = end - start;
 				word = malloc(sizeof(char) * (w_len + 1));
-				memcpy(word, s + start, w_len);
+				_memcpy(word, s + start, w_len);
 				word[w_len] = '\0';
 				r_size = r_size + 1;
-				result = realloc(result, sizeof(char*) * r_size);
+				result = _realloc(result, sizeof(char*) * r_size);
 				result[w_count] = word;
 				w_count++, in_word = 0;
 			}
@@ -39,7 +39,7 @@ char **split_string(char *s, int len, char delimiter)
 	}
 
 	r_size = r_size + 1;
-	result = realloc(result, sizeof(char*) * r_size);
+	result = _realloc(result, sizeof(char*) * r_size);
 	result[w_count] = NULL;
 
 	return result;

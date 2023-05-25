@@ -1,6 +1,11 @@
 #include "shell.h"
 
-#define BUFF_SIZE 100
+
+/**
+* _getline - reads an entire line.
+* @fd: file descriptor.
+* Return: the read line. 
+*/
 
 char *_getline(int fd)
 {
@@ -29,10 +34,10 @@ char *_getline(int fd)
 			if (line_size % BUFF_SIZE == 0)
 			{
 				size_t new_size = line_size + BUFF_SIZE;
-				line = realloc(line, new_size);
+				line = _realloc(line, new_size);
 				if (line == NULL)
 				{
-					perror("realloc");
+					perror("_realloc");
 					exit(EXIT_FAILURE);
 				}
 			}
@@ -42,7 +47,7 @@ char *_getline(int fd)
 		if (buff_pos < buff_size && buff[buff_pos] == '\n')
 		{
 			buff_pos++;
-			line = realloc(line, line_size + 1);
+			line = _realloc(line, line_size + 1);
 			line[line_size] = '\0';
 			return line;
 		}

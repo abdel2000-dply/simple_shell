@@ -1,11 +1,10 @@
 #include "shell.h"
 
-typedef struct builtin
-{
-	char *cmd;
-	int (*func)(char **arg, char *av);
-} builtin;
-
+/**
+* exex_cmd - handls the execution of a command.
+* @arg: a pointer to a string of args.
+* @av: the name of the program
+*/
 void exec_cmd(char **arg, char *av)
 {
 	char *bin_arg;
@@ -20,7 +19,7 @@ void exec_cmd(char **arg, char *av)
 	};
 	while (b[i].cmd)
 	{
-		if (!strcmp(b[i].cmd, arg[0]))
+		if (!_strcmp(b[i].cmd, arg[0]))
 		{
 			b[i].func(arg, av);
 			return;
@@ -28,7 +27,6 @@ void exec_cmd(char **arg, char *av)
 		i++;
 	}
 	
-
 	bin_arg = _strcat("/bin/", arg[0]);
 	if (access(arg[0], F_OK) && access(bin_arg, F_OK))
 	{

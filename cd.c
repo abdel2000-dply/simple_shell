@@ -1,7 +1,12 @@
 #include "shell.h"
 
 char last_dir[256] = {0};
-
+/**
+* cd - change directory
+* @arg: a pointer to a string of arg.
+* @av: the name of the program
+* Return: 0, -1 if error
+*/
 int cd(char **arg, char *av)
 {
 	char *home, curr_dir[256];
@@ -32,7 +37,8 @@ int cd(char **arg, char *av)
 		chdir(last_dir);
 		printf("%s\n", last_dir);
 		_strcpy(last_dir, curr_dir);
-		getcwd(pwd[2], sizeof(pwd[2]));
+		getcwd(curr_dir, sizeof(curr_dir));
+		pwd[2] = curr_dir;
 		_setenv(pwd, av);
 	}
 	else
@@ -45,7 +51,7 @@ int cd(char **arg, char *av)
 			perror(arg[1]);
 			return (-1);
 		}
-		pwd[2] = arg[1];
+		pwd[2] = curr_dir;
 		_strcpy(last_dir, curr_dir);
 		_setenv(pwd, av);
 	}

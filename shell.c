@@ -1,5 +1,9 @@
 #include "shell.h"
 
+/**
+* intmode - interactive & non-interactive shell mode
+* @av: argument vector
+*/
 void intmode(char **av)
 {
 	char **arg, **cmds, *line;
@@ -43,6 +47,10 @@ void intmode(char **av)
 	}
 }
 
+/**
+* filemode - read from file shell mode
+* @av: argument vector
+*/
 void filemode(char **av)
 {
 	int fd;
@@ -63,6 +71,13 @@ void filemode(char **av)
 	}
 }
 
+/**
+* main - the entry point of the program.
+* @ac: the number of command-line arguments
+* @av: an array of command-line argument strings
+*
+* Return: Always 0.
+*/
 int main(int __attribute__((unused)) ac, char **av)
 {
 	if (ac > 1)

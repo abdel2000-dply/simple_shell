@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+* ex - exiting
+* @arg: a pointer to a string of args.
+* @av: the name of the program.
+*
+* Return: ...
+*/
 int ex(char **arg, char *av)
 {
     int exit_code;
