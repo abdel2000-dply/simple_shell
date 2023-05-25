@@ -3,7 +3,8 @@
 int _env(char **arg, char *av)
 {
     int i = 0;
-    (void) arg, av;
+    (void) arg;
+    (void) av;
 
     while (environ[i])
         printf("%s\n", environ[i++]);
