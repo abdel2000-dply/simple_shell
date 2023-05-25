@@ -2,6 +2,8 @@
 /**
  * split_string - a fucntion that splits a string.
  * @s: string.
+ * @len: line length
+ * @delimiter: delimiter
  * Return: pointer to an array of array.
  */
 
@@ -15,7 +17,7 @@ char **split_string(char *s, int len, char delimiter)
 
 	for (i = 0; i <= len; i++)
 	{
-		if (s[i] == delimiter || s[i] == '\0'|| s[i] == '\t' )
+		if (s[i] == delimiter || s[i] == '\0' || s[i] == '\t')
 		{
 			if (in_word)
 			{
@@ -24,7 +26,7 @@ char **split_string(char *s, int len, char delimiter)
 				_memcpy(word, s + start, w_len);
 				word[w_len] = '\0';
 				r_size = r_size + 1;
-				result = _realloc(result, sizeof(char*) * r_size);
+				result = _realloc(result, sizeof(char *) * r_size);
 				result[w_count] = word;
 				w_count++, in_word = 0;
 			}
@@ -39,8 +41,8 @@ char **split_string(char *s, int len, char delimiter)
 	}
 
 	r_size = r_size + 1;
-	result = _realloc(result, sizeof(char*) * r_size);
+	result = _realloc(result, sizeof(char *) * r_size);
 	result[w_count] = NULL;
 
-	return result;
+	return (result);
 }

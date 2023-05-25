@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
-* intmode - interactive & non-interactive shell mode
-* @av: argument vector
-*/
+ * intmode - interactive & non-interactive shell mode
+ * @av: argument vector
+ */
 void intmode(char **av)
 {
 	char **arg, **cmds, *line;
@@ -25,7 +25,8 @@ void intmode(char **av)
 			cmds = split_string(line, len, del[0]);
 			cmds = spliting_bydelimiter(cmds, del);
 		}
-		else {
+		else
+		{
 			cmds = malloc(2 * sizeof(char *));
 			cmds[0] = line;
 			cmds[1] = NULL;
@@ -48,9 +49,9 @@ void intmode(char **av)
 }
 
 /**
-* filemode - read from file shell mode
-* @av: argument vector
-*/
+ * filemode - read from file shell mode
+ * @av: argument vector
+ */
 void filemode(char **av)
 {
 	int fd;
@@ -64,7 +65,7 @@ void filemode(char **av)
 	while ((line = getcmd(fd)) != NULL)
 	{
 		if (!line)
-		continue;
+			continue;
 
 		cmds = split_string(line, _strlen(line), ' ');
 		exec_cmd(cmds, av[0]);
@@ -72,12 +73,12 @@ void filemode(char **av)
 }
 
 /**
-* main - the entry point of the program.
-* @ac: the number of command-line arguments
-* @av: an array of command-line argument strings
-*
-* Return: Always 0.
-*/
+ * main - the entry point of the program.
+ * @ac: the number of command-line arguments
+ * @av: an array of command-line argument strings
+ *
+ * Return: Always 0.
+ */
 int main(int __attribute__((unused)) ac, char **av)
 {
 	if (ac > 1)

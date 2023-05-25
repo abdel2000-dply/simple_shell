@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-* spliting_bydelimiter - spliting a string by a delimiter
-* @cmds: a pointer to a string of commands.
-* @del: the delimiter to split by.
-* Return: the splited cmds.
-*/
+ * spliting_bydelimiter - spliting a string by a delimiter
+ * @cmds: a pointer to a string of commands.
+ * @del: the delimiter to split by.
+ * Return: the splited cmds.
+ */
 char **spliting_bydelimiter(char **cmds, char *del)
 {
 	char **new_cmds = NULL;
@@ -35,5 +35,5 @@ char **spliting_bydelimiter(char **cmds, char *del)
 		cmds = new_cmds;
 	}
 
-	return cmds;
+	return (cmds);
 }

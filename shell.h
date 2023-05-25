@@ -14,10 +14,10 @@ extern char **environ;
 #define BUFF_SIZE 100
 
 /**
-* struct builtin - ...
-* @cmd: command name
-* @func: function to execute the command
-*/
+ * struct builtin - ...
+ * @cmd: command name
+ * @func: function to execute the command
+ */
 typedef struct builtin
 {
 	char *cmd;

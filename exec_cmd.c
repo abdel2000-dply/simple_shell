@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
-* exex_cmd - handls the execution of a command.
-* @arg: a pointer to a string of args.
-* @av: the name of the program
-*/
+ * exec_cmd - handls the execution of a command.
+ * @arg: a pointer to a string of args.
+ * @av: the name of the program
+ */
 void exec_cmd(char **arg, char *av)
 {
 	char *bin_arg;
@@ -26,7 +26,7 @@ void exec_cmd(char **arg, char *av)
 		}
 		i++;
 	}
-	
+
 	bin_arg = _strcat("/bin/", arg[0]);
 	if (access(arg[0], F_OK) && access(bin_arg, F_OK))
 	{
