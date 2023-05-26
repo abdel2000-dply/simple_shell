@@ -42,8 +42,9 @@ int cd(char **arg, char *av)
 		getcwd(curr_dir, sizeof(curr_dir));
 		if (chdir(arg[1]) == -1)
 			return (erro(arg[1], av, 2));
-		pwd[2] = curr_dir;
 		_strcpy(last_dir, curr_dir);
+		getcwd(curr_dir, sizeof(curr_dir));
+		pwd[2] = curr_dir;
 		_setenv(pwd, av);
 	}
 	return (0);
