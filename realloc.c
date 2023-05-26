@@ -33,3 +33,34 @@ void *_realloc(void *ptr, unsigned int new_size)
 	free(ptr);
 	return (s);
 }
+
+/**
+ * _realloc_array - reallocates a memory block using malloc and free
+ * @array: pointer to an array of pointers previously allocated
+ * @new_size: the new size of the new memory block
+ *
+ * Return: a pointer with the new size
+ */
+char **_realloc_array(char **array, int new_size)
+{
+	char **newArray = malloc(sizeof(char *) * new_size);
+	int i, copySize, oldSize = 0;
+
+	if (newArray == NULL)
+	{
+		printf("Memory allocation failed.\n");
+		return (array);
+	}
+
+	while (array && array[oldSize])
+		oldSize++;
+
+	copySize = oldSize < new_size ? oldSize : new_size;
+
+	for (i = 0; i < copySize; i++)
+		newArray[i] = array[i];
+
+	free(array);
+
+	return (newArray);
+}
