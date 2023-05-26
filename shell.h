@@ -56,6 +56,7 @@ char **spliting_bydelimiter(char **cmds, char *del);
 /* memory managment*/
 void *_realloc(void *ptr, unsigned int new_size);
 char *_memcpy(char *dest, char *src, unsigned int n);
+void free_array(char **array);
 
 
 #endif /* SHELL_H */
