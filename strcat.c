@@ -16,7 +16,7 @@ char *_strcat(char *dest, char *src)
 	destlen = _strlen(dest);
 	srclen = _strlen(src);
 	n = malloc(sizeof(char) * (destlen + srclen + 1));
-	_strcpy(n, dest);
+	_memcpy(n, dest, destlen);
 
 	while (*src)
 		n[destlen++] = *src++;
