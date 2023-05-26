@@ -44,7 +44,7 @@ void *_realloc(void *ptr, unsigned int new_size)
 char **_realloc_array(char **array, int new_size)
 {
 	char **newArray = malloc(sizeof(char *) * new_size);
-	int i, copySize, oldSize = 0;
+	int i;
 
 	if (newArray == NULL)
 	{
@@ -52,12 +52,7 @@ char **_realloc_array(char **array, int new_size)
 		return (array);
 	}
 
-	while (array && array[oldSize])
-		oldSize++;
-
-	copySize = oldSize < new_size ? oldSize : new_size;
-
-	for (i = 0; i < copySize; i++)
+	for (i = 0; array && i < new_size - 1; i++)
 		newArray[i] = array[i];
 
 	free(array);
