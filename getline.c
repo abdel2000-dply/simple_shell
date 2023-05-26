@@ -16,10 +16,10 @@ void err(char *error)
  * @line_size: ...
  * Return: null terminated line
  */
-char *add_nullterm(char *line, int line_size)
+char *add_nullterm(char **line, int line_size)
 {
-	line[line_size] = '\0';
-	return (line);
+	(*line)[line_size] = '\0';
+	return (*line);
 }
 /**
  * _getline - reads an entire line.
@@ -61,10 +61,10 @@ char *_getline(int fd)
 		{
 			buff_pos++;
 			line = _realloc(line, line_size + 1);
-			return (add_nullterm(line, line_size));
+			return (add_nullterm(&line, line_size));
 		}
 	}
 	if (line_size > 0)
-		return (add_nullterm(line, line_size));
+		return (add_nullterm(&line, line_size));
 	return (NULL);
 }
