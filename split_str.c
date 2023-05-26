@@ -3,45 +3,44 @@
  * split_string - a fucntion that splits a string.
  * @s: string.
  * @len: line length
- * @delimiter: delimiter
+ * @delim: delimiter
  * Return: pointer to an array of array.
  */
 
-char **split_string(char *s, int len, char delimiter)
+char **split_string(char *s, int len, char delim)
 {
-	char **result = NULL;
-	int r_size = 0, w_count = 0, i;
-	int in_word = 0, w_len;
-	int start = -1, end = -1;
-	char *word;
+	char *word, **result = NULL;
+	int r_size, w_count, in_word, w_len, start, end, i;
+
+	r_size = w_count = in_word = 0;
+	start = end = -1;
 
 	for (i = 0; i <= len; i++)
 	{
-		if (s[i] == delimiter || s[i] == '\0' || s[i] == '\t')
+		if (s[i] == delim || s[i] == '\0' || s[i] == '\t' || s[i] == '#')
 		{
 			if (in_word)
 			{
-				end = i, w_len = end - start;
+				end = i;
+				w_len = end - start;
 				word = malloc(sizeof(char) * (w_len + 1));
 				_memcpy(word, s + start, w_len);
 				word[w_len] = '\0';
-				r_size = r_size + 1;
-				result = _realloc(result, sizeof(char *) * r_size);
+				result = _realloc(result, sizeof(char *) * (++r_size));
 				result[w_count] = word;
 				w_count++, in_word = 0;
 			}
-			if (s[i] == '#')
-				break;
 		}
 		else
 		{
 			if (!in_word)
 				start = i, in_word = 1;
 		}
+		if (s[i] == '#')
+			break;
 	}
 
-	r_size = r_size + 1;
-	result = _realloc(result, sizeof(char *) * r_size);
+	result = _realloc(result, sizeof(char *) * (++r_size));
 	result[w_count] = NULL;
 
 	return (result);
