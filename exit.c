@@ -14,6 +14,7 @@ int ex(char **arg, char *av)
 
 	exit_code = (isnumber(arg[1])) ? _atoi(arg[1]) : 100;
 
+	free_array(arg);
 	_exit(exit_code);
 	return (0);
 }
