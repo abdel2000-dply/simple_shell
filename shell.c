@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * intmode - interactive & non-interactive shell mode
  * @av: argument vector
@@ -20,12 +19,16 @@ void intmode(char **av)
 
 		cmds = split_string(line, len, ';');
 
+		free(line);
+
 		for (i = 0; cmds[i]; i++)
 		{
 			arg = split_string(cmds[i], _strlen(cmds[i]), ' ');
 
 			if (!arg[0])
 				continue;
+			if (!_strcmp("exit", arg[0]))
+				free_array(cmds), ex(arg, av[0]);
 
 			exec_cmd(arg, av[0]);
 
