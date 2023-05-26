@@ -26,7 +26,7 @@ char **split_string(char *s, int len, char delim)
 				word = malloc(sizeof(char) * (w_len + 1));
 				_memcpy(word, s + start, w_len);
 				word[w_len] = '\0';
-				result = _realloc(result, sizeof(char *) * (++r_size));
+				result = _realloc_array(result, sizeof(char *) * (++r_size));
 				result[w_count] = word;
 				w_count++, in_word = 0;
 			}
@@ -40,7 +40,7 @@ char **split_string(char *s, int len, char delim)
 			break;
 	}
 
-	result = _realloc(result, sizeof(char *) * (++r_size));
+	result = _realloc_array(result, sizeof(char *) * (++r_size));
 	result[w_count] = NULL;
 
 	return (result);
