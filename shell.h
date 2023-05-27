@@ -11,7 +11,7 @@
 
 extern char **environ;
 
-#define BUFF_SIZE 100
+#define BUFF_SIZE 1024
 
 /**
  * struct builtin - ...
