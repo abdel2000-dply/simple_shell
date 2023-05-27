@@ -14,7 +14,7 @@ int ex(char **arg, char *av)
 
 	exit_code = (!arg[1]) ? 0 : 2;
 	exit_code = (isnumber(arg[1])) ? _atoi(arg[1]) : exit_code;
-	if (_atoi(arg[1]) < 0)
+	if (arg[1] && _atoi(arg[1]) < 0)
 		dprintf(STDERR_FILENO, "%s: 1: exit: Illegal number: %s\n", av, arg[1]);
 
 	if (!arg)
