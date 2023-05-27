@@ -59,5 +59,4 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 void free_array(char **array);
 char **_realloc_array(char **array, int newSize);
 
-
 #endif /* SHELL_H */

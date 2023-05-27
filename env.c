@@ -10,8 +10,8 @@
 int _env(char **arg, char *av)
 {
 	int i = 0;
-	(void) arg;
-	(void) av;
+	(void)arg;
+	(void)av;
 
 	while (environ[i])
 		printf("%s\n", environ[i++]);
@@ -69,14 +69,17 @@ char *new_env_var(char *name, char *value)
  */
 int _setenv(char **arg, char *av)
 {
-	char **env, *name = arg[1], *value = arg[2];
+	char **env = NULL, *var, *name = arg[1], *value = arg[2];
 	int len, size = 0;
-	(void) av;
+	(void)av;
 
 	len = _strlen(name);
 
 	while (environ[size])
 		size++;
+
+	if (env != NULL)
+		free_array(env);
 
 	env = malloc(sizeof(char *) * (size + 1));
 	size = 0;
@@ -85,7 +88,9 @@ int _setenv(char **arg, char *av)
 		if (!_strncmp(environ[size], name, len) && environ[size][len] == '=')
 		{
 			env[size] = malloc(_strlen(name) + _strlen(value) + 2);
-			env[size++] = new_env_var(name, value);
+			var = new_env_var(name, value);
+			_strcpy(env[size++], var);
+			free(var);
 			continue;
 		}
 		env[size] = malloc(_strlen(environ[size]) + 1);
@@ -97,7 +102,9 @@ int _setenv(char **arg, char *av)
 	{
 		env = _realloc(env, sizeof(char *) * (size + 2));
 		env[size] = malloc(_strlen(name) + _strlen(value) + 2);
-		env[size] = new_env_var(name, value);
+		var = new_env_var(name, value);
+		_strcpy(env[size++], var);
+		free(var);
 		env[++size] = NULL;
 		environ = env;
 		return (0);
@@ -121,7 +128,7 @@ int _unsetenv(char **arg, char *av)
 {
 	char **env, *name = arg[1];
 	int len, found = 0, size = 0, i = 0;
-	(void) av;
+	(void)av;
 
 	len = _strlen(name);
 

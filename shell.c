@@ -34,7 +34,6 @@ void intmode(char **av)
 
 			free_array(arg);
 		}
-		free(line);
 		free_array(cmds);
 	}
 }

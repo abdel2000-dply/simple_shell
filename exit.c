@@ -10,11 +10,12 @@
 int ex(char **arg, char *av)
 {
 	int exit_code;
-	(void) av;
+	(void)av;
 
 	exit_code = (isnumber(arg[1])) ? _atoi(arg[1]) : 100;
 
 	free_array(arg);
+	free_array(environ);
 	_exit(exit_code);
 	return (0);
 }

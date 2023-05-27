@@ -44,4 +44,6 @@ void exec_cmd(char **arg, char *av)
 	}
 	else
 		wait(NULL);
+
+	free(bin_arg);
 }
